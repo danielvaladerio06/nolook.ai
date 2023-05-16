@@ -1,0 +1,22 @@
+
+.screen{
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: center;
+    margin: center;
+    max-width:30%;
+    float:center;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.titolo{
+    text-align: auto;
+    color: rgba(128, 128, 128, 0.702);
+}
+ 
+
+
