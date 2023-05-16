@@ -7,7 +7,7 @@
     margin: center;
     max-width:30%;
     float:center;
-    margin: 0 auto;
+    margin: 0 px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -16,6 +16,16 @@
 .titolo{
     text-align: auto;
     color: rgba(128, 128, 128, 0.702);
+    margin: 0px;
+}
+
+.button{
+    background-color: rgba(0, 128, 0, 0.613);
+    color: white;
+    border-radius: 5px;
+    margin: 10px;  
+    height: 30px;
+    width: 60px; 
 }
  
 
