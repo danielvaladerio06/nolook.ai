@@ -1,21 +1,42 @@
+:root {
+    --blue-logo: #0f5377;
+    --red-logo: #8e2e44;
+}
+  
 body{
-    background-color: green;
+    background-image: linear-gradient(rgba(0, 110, 255, 0.666), rgb(0, 162, 255));
+    font-family: 'Roboto', sans-serif !important;
 }
 
 .screen{
     background-color: white;
     box-sizing: border-box;
     display: block;
-    height: 778.875px;
+    height: 778px;
     max-width: none;
     min-width: auto;
     padding-bottom: 160px;
     padding-left: 50px;
     padding-right: 80px;
     padding-top: 50px;
-    width: 583.2px;
-    
-  
+    width: 583px;
+    text-align: left;
+}
+
+.n{
+    fill: var(--blue-logo);
+}
+.o{
+    fill: var(--blue-logo);
+}
+.a{
+   fill:var(--red-logo); 
+}
+.i{
+    fill:var(--red-logo);
+}
+.punto{
+    fill:var(--red-logo);
 }
 
 .titolo{
@@ -24,8 +45,11 @@ body{
     margin-left: 1 px;
     margin-right: 15px;
     font-size: 15px;
-    margin: 10px;
     text-align: left;
+}
+#form{
+    background-color: rgba(0, 0, 255, 0.142); 
+    border-color: blue;
 
 }
 
@@ -36,7 +60,8 @@ body{
     font-size: 16px;
     border: 1px black solid; 
     height: 46px;
-    weight: 756px ;
+    width: 420px ;
+    text-align: left;
 }
 
 .dropdown {
@@ -50,7 +75,6 @@ body{
     background-color: white;
     box-shadow: black;
     border: 1px black solid;
-
 }
 
 .dropdown-content a {
@@ -61,13 +85,13 @@ body{
 }
 
     .dropdown-content a:hover {background-color: #ddd;}
-
+    
     .dropdown:hover .dropdown-content {display: grid ;}
 
     .dropdown:hover .dropbtn {background-color: white;}
 
 .button2{
-    background-color: rgba(0, 128, 0, 0.613);
+    background-color: blue;
     color: white;
     border-radius: 5px;
     margin: 10px;  
@@ -78,5 +102,3 @@ body{
     margin-bottom: -16px;
 }
  
-
-
