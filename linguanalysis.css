@@ -4,7 +4,7 @@
 }
   
 body{
-    background-image: linear-gradient(rgba(0, 110, 255, 0.666), rgb(0, 162, 255));
+    background-image: linear-gradient(rgba(0, 110, 255, 0.666), rgb(0, 234, 255));
     font-family: 'Roboto', sans-serif !important;
 }
 
@@ -12,9 +12,9 @@ body{
     background-color: white;
     box-sizing: border-box;
     display: block;
-    height: 778px;
-    max-width: none;
-    min-width: auto;
+
+    
+    height: 700px;
     padding-bottom: 160px;
     padding-left: 50px;
     padding-right: 80px;
@@ -22,7 +22,7 @@ body{
     width: 583px;
     text-align: left;
 }
-
+/* lettere logo*/
 .n{
     fill: var(--blue-logo);
 }
@@ -40,18 +40,45 @@ body{
 }
 
 .titolo{
-    text-align: auto;
+
     color: rgba(0, 0, 0, 0.852);
     margin-left: 1 px;
     margin-right: 15px;
     font-size: 15px;
     text-align: left;
 }
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 2px;
+  padding: 2rem 1.5rem;
+  font: 1rem/1.5 "PT Sans", Arial, sans-serif;
+  color: red;
+}
+
 #form{
     background-color: rgba(0, 0, 255, 0.142); 
-    border-color: blue;
-
+    border-color: rgba(0, 0, 255, 0.142);
+    border-radius: 5px;
+    max-width: 500px;
+    min-width: 500px;
+    max-height: auto;
+    min-height: 80px;
+    outline-color:blue;
+    padding: 15px;
+    font-family: 'Roboto', sans-serif !important;
 }
+input[typi=text]:focus{
+    border: 2px solid red;
+}
+
 
 .dropbtn {
     background-color: white;
@@ -62,6 +89,7 @@ body{
     height: 46px;
     width: 420px ;
     text-align: left;
+    border-radius: 5px;
 }
 
 .dropdown {
@@ -75,6 +103,7 @@ body{
     background-color: white;
     box-shadow: black;
     border: 1px black solid;
+    border-radius: 5px;
 }
 
 .dropdown-content a {
@@ -99,6 +128,6 @@ body{
     width: 60px;
     margin-left: auto;
     margin-right: auto; 
-    margin-bottom: -16px;
+    
 }
  
