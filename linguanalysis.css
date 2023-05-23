@@ -3,16 +3,16 @@
     --red-logo: #8e2e44;
 }
 
-
 html {
     height: 100%;
 }
   
 body{
-    background-image: linear-gradient(rgba(0, 110, 255, 0.666), rgb(0, 234, 255));
+    background-color:blue;
     font-family: 'Roboto', sans-serif !important;
     margin: 0;
     height: 100%;
+    padding: 50px;
 }
 
 .mainBox{
@@ -30,8 +30,9 @@ body{
     text-align: left;
     border-radius: 15px;
     max-height: 90%;
-    overflow: auto;
+    overflow: auto;   
 }
+
 /* lettere logo*/
 .n{
     fill: var(--blue-logo);
@@ -55,83 +56,18 @@ body{
     margin-right: 15px;
     font-size: 15px;
     text-align: left;
+    margin-top: 10px;
 }
- 
-.form{
-    background-color: rgba(0, 0, 255, 0.142); 
-    border-color: rgba(0, 0, 255, 0.142);
-    border-radius: 5px;
-    max-width: auto;
-    min-width: 50px;
-    max-height: auto;
-    min-height: 50px;
-    outline-color:blue;
-    padding: 15px;
-    font-family: 'Roboto', sans-serif !important;
-}
-
-
-.dropbtn {
-    background-color: white;
-    color: black;
-    padding: 16px;
-    font-size: 16px;
-    border: 1px black solid; 
-    height: 46px;
-    width: 420px ;
-    text-align: left;
-    border-radius: 5px;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    box-shadow: black;
-    border: 1px black solid;
-    border-radius: 5px;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-    .dropdown-content a:hover {background-color: #ddd;}
-    
-    .dropdown:hover .dropdown-content {display: grid ;}
-
-    .dropdown:hover .dropbtn {background-color: white;}
-
-.button2{
-    background-color: blue;
-    color: white;
-    border-radius: 5px;
-    margin: 10px;  
-    height: 30px;
-    width: 60px;
-    margin-left: auto;
-    margin-right: auto; 
-    
-}
-
-
+/*--------------------------------------------------------------*/
 .area {
     width: 100%;
     position: relative;
-    border: 4px dashed blue;
+    border: 2px dashed blue;
     background-color: rgba(0, 0, 255, 0.258);
     background-image: url("https://cdn-icons-png.flaticon.com/512/126/126477.png");
     background-position: left;
     background-repeat: no-repeat;
-    background-size: 52px 45px;
+    background-size: 48px 41px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -141,11 +77,12 @@ body{
     opacity: 0.5;
     text-align: left;
     padding: 12px 72px;
-    margin-bottom: 25px;
-    
-  }
-  
-  .area input {
+    margin-bottom: 30px;
+    border-radius: 10px;
+    margin-top: 7px;
+}
+
+.area input {
     cursor: pointer;
     position: absolute;
     top: 0;
@@ -153,25 +90,96 @@ body{
     right: 0;
     bottom: 0;
     opacity: 0;
-  }
-  
-  
-  
-  .area .spinner {
+}
+
+.area .spinner {
     display: none;
     margin-top: 50%;
-  }
-  
-  .area:hover,
-  .area.dragging,
-  .area.uploading {
+}
+
+.area:hover,
+.area.dragging,
+.area.uploading {
     filter: alpha(opacity=100);
     -khtml-opacity: 1;
     -moz-opacity: 1;
     opacity: 1;
-  }
-  
-  .area.uploading {
+}
+
+.area.uploading {
     background: none;
+}
+/*--------------------------------------------------------------*/
+
+/*-------------------------------------------------------------*/
+
+#form{
+    background-color: rgba(0, 0, 255, 0.142);
+    border-color: rgba(0, 0, 255, 0.142);
+    border-radius: 5px;
+    max-height: auto;
+    min-height: 50px;
+    outline-color: blue;
+    padding: 15px 4%;
+    font-family: 'Roboto', sans-serif !important;
+    border-bottom: 50px;
+    width: 92%!important;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    margin-top: 7px;
+}
+
+.scelta{
+background-color: white;
+border: 1px solid blue;
+height: 40px;
+width: 100%;
+text-align: left;
+font-family: 'Roboto', sans-serif !important;
+padding: 5px;
+position: relative;
+}
+
+#opzione{
+    background-color: white;
+    border: 1px solid blue;
+    height: 100%;
+    width: 92%;
+    text-align: left;  
+    font-family: 'Roboto', sans-serif !important;
+    padding: 15px;   
+}
+
+.arrow {
+    border:  solid blue;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    position: absolute;
+    right: 15px;
+    transition: 0.2s;
+    top: 14px;
   }
- 
+
+ .active .arrow {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+
+  .button2{
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    margin: 10px;  
+    height: 30px;
+    width: 60px;
+    margin-left: auto;
+    margin-right: auto; 
+    margin-top: 25px;
+}
+
+
+
+
