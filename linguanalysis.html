@@ -12,6 +12,24 @@
 
 </head>
 <body>
+    <script>
+        /*dichiarazione variabili*/
+        var file = false
+        var opzione1 = false
+        var opzione2 = false
+
+        var domanda = ""
+
+        function invio(){
+            domanda = document.getElementById("form").value;
+            console.log("domanda", domanda)
+            console.log("file", file)
+            console.log("opzione1", opzione1)
+            console.log("opzione2", opzione2)
+        }
+
+
+    </script>
   
     <div class="mainBox">    
         <div class="screen">    
@@ -82,7 +100,7 @@
                 <input type="file" id="upload" />
             </div>
         <script>
-        var upload = document.getElementById('upload');
+            var upload = document.getElementById('upload');
 
             function onFile() {
                 var me = this,
@@ -124,12 +142,11 @@
             }, false);
         </script>
             
-            
-            Fai una domanda sul documento
+        Fai una domanda sul documento
         <!-- spazio per scrivere -->
         <div class="form">
             <!--aumento e diminuisco le dimensione del riquadro per scrivere le domande-->
-            <textarea name="form" id="form" cols="60" rows="3"></textarea>
+            <textarea name="form" id="form" type="text" ></textarea>
         </div>
 
         <button class="scelta">
@@ -138,14 +155,12 @@
         </button>
 
         <div id="opzione" style="display: none">
-            <input type="checkbox" name="opzione1" value="opzione1"/> 
+            <input type="checkbox" name="opzione1" value="opzione1" id="o1"/> 
             Mostra tutti i blocchi recuperati dalla ricerca vettoriale<br><br>
-            <input type="checkbox" name="opzione1" value="opzione1"/> 
+            <input type="checkbox" name="opzione2" value="opzione2" id="o2"/> 
             Mostra i contenuti anaizzati del documento
         </div>
-        
-        
-        
+
 
         <script>
             var acc = document.getElementsByClassName("scelta");
@@ -161,15 +176,15 @@
                     panel.style.display = "block";
                     }
                 });
-            }
+            }  
         </script>
         <br>
-
-        <button class="button2">
-            invia
-        </div>
+        <button id="invio" onclick="invio()">invio</button>
     </div>
 </div>
-    
+
+
+
 </body>
 </html>
+

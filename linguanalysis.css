@@ -49,16 +49,16 @@ body{
 .punto{
     fill:var(--red-logo);
 }
-
+/*------------------------------------------------------*/
 .titolo{
     color: rgba(0, 0, 0, 0.852);
-    margin-left: 1 px;
+    margin-left: 1px;
     margin-right: 15px;
     font-size: 15px;
     text-align: left;
     margin-top: 10px;
 }
-/*--------------------------------------------------------------*/
+
 .area {
     width: 100%;
     position: relative;
@@ -109,9 +109,6 @@ body{
 .area.uploading {
     background: none;
 }
-/*--------------------------------------------------------------*/
-
-/*-------------------------------------------------------------*/
 
 #form{
     background-color: rgba(0, 0, 255, 0.142);
@@ -138,16 +135,25 @@ text-align: left;
 font-family: 'Roboto', sans-serif !important;
 padding: 5px;
 position: relative;
+border-radius: 10px;
+}
+
+.scelta.active{
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom: none;
 }
 
 #opzione{
     background-color: white;
     border: 1px solid blue;
     height: 100%;
-    width: 92%;
     text-align: left;  
     font-family: 'Roboto', sans-serif !important;
     padding: 15px;   
+    border-top-style: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .arrow {
@@ -168,18 +174,18 @@ position: relative;
     -webkit-transform: rotate(-135deg);
   }
 
-  .button2{
+  #invio{
     background-color: blue;
     color: white;
-    border-radius: 5px;
-    margin: 10px;  
-    height: 30px;
-    width: 60px;
-    margin-left: auto;
-    margin-right: auto; 
-    margin-top: 25px;
+    border-radius: 10px;
+    margin: 25px auto 10px auto;
+    border: none;
+    font-size: 16px;
+    padding: 12px 25px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-
-
-
+#invio:hover{
+    opacity: 0.7;
+}
