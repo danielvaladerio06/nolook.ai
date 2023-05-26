@@ -17,18 +17,43 @@
         var file = false
         var opzione1 = false
         var opzione2 = false
-
         var domanda = ""
 
         function invio(){
             domanda = document.getElementById("form").value;
+            opzione1 = document.getElementById("opzione1").checked;
+            opzione2 = document.getElementById("opzione2").checked;
+            file = document.getElementById("upload").value ? true : false;
             console.log("domanda", domanda)
             console.log("file", file)
             console.log("opzione1", opzione1)
             console.log("opzione2", opzione2)
-        }
+            if(file === false){
+                document.getElementById("errorefile").innerHTML = "devi inserire un file";
+                document.getElementById("errorefile").classList.add("errortext");
 
+            }else{
+                document.getElementById("errorefile").innerHTML = "";
+                document.getElementById("errorefile").classList.remove("errortext");
+            }
+            
+            if(domanda === ""){
+                document.getElementById("erroredomanda").innerHTML = "devi inserire una domanda";
+                document.getElementById("erroredomanda").classList.add("errortext");
+            }else{
+                document.getElementById("erroredomanda").innerHTML = "";
+                document.getElementById("erroredomanda").classList.remove("errortext");
 
+            }
+        } 
+
+        
+    
+        window.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                invio()
+            }
+        });
     </script>
   
     <div class="mainBox">    
@@ -99,6 +124,7 @@
                 Limite di 10 MB per file • PDF, DOCX, TXT
                 <input type="file" id="upload" />
             </div>
+            <div id="errorefile"></div>
         <script>
             var upload = document.getElementById('upload');
 
@@ -107,22 +133,7 @@
                     file = upload.files[0],
                     name = file.name.replace(/\.[^/.]+$/, '');
             
-                if (file.type === '' ||
-                    file.type === 'audio/mp3' ||       
-                    file.type === 'file/text' ||
-                    file.type === 'audio/mpeg' ||
-                    file.type === 'audio/wav' ||
-                    file.type === 'audio/x-wav' ||
-                    file.type === 'audio/wave' ||
-                    file.type === 'audio/x-pn-wav') {
-                    if (file.size < (3000 * 1024)) {
-                        upload.parentNode.className = 'area uploading';
-                    } else {
-                        window.alert('File size is too large, please ensure you are uploading a file of less than 3MB');
-                    }
-                } else {
-                    window.alert('File type ' + file.type + ' not supported');
-                }
+                
             }
             
             upload.addEventListener('dragenter', function (e) {
@@ -140,6 +151,23 @@
             upload.addEventListener('change', function (e) {
                 onFile();
             }, false);
+            cc
+            if (file.type === '' ||
+                    file.type === 'audio/mp3' ||       
+                    file.type === 'file/text' ||
+                    file.type === 'audio/mpeg' ||
+                    file.type === 'audio/wav' ||
+                    file.type === 'audio/x-wav' ||
+                    file.type === 'audio/wave' ||
+                    file.type === 'audio/x-pn-wav') {
+                    if (file.size < (3000 * 1024)) {
+                        upload.parentNode.className = 'area uploading';
+                    } else {
+                        window.alert('File size is too large, please ensure you are uploading a file of less than 3MB');
+                    }
+                } else {
+                    window.alert('File type ' + file.type + ' not supported');
+                }
         </script>
             
         Fai una domanda sul documento
@@ -148,6 +176,7 @@
             <!--aumento e diminuisco le dimensione del riquadro per scrivere le domande-->
             <textarea name="form" id="form" type="text" ></textarea>
         </div>
+        <div id="erroredomanda"></div>
 
         <button class="scelta">
             Opzioni avanzate 
@@ -155,9 +184,9 @@
         </button>
 
         <div id="opzione" style="display: none">
-            <input type="checkbox" name="opzione1" value="opzione1" id="o1"/> 
+            <input type="checkbox" name="opzione1" value="opzione1" id="opzione1"/> 
             Mostra tutti i blocchi recuperati dalla ricerca vettoriale<br><br>
-            <input type="checkbox" name="opzione2" value="opzione2" id="o2"/> 
+            <input type="checkbox" name="opzione2" value="opzione2" id="opzione2"/> 
             Mostra i contenuti anaizzati del documento
         </div>
 
@@ -181,10 +210,6 @@
         <br>
         <button id="invio" onclick="invio()">invio</button>
     </div>
-</div>
-
-
-
-</body>
+</body>     
 </html>
 
