@@ -1,92 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="linguanalysis.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="linguanalysis.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
 </head>
+
 <body>
-    <script>
-        /*dichiarazione variabili*/
-        var file = false
-        var opzione1 = false
-        var opzione2 = false
-        var domanda = ""
+  <script>
+    var file = false
+    var opzione1 = false
+    var opzione2 = false
+    var domanda = ""
 
-        function invio(){
-            domanda = document.getElementById("form").value;
-            opzione1 = document.getElementById("opzione1").checked;
-            opzione2 = document.getElementById("opzione2").checked;
-            file = document.getElementById("upload").value ? true : false;
-            console.log("domanda", domanda)
-            console.log("file", file)
-            console.log("opzione1", opzione1)
-            console.log("opzione2", opzione2)
-            if(file === false){
-                document.getElementById("errorefile").innerHTML = "devi inserire un file";
-                document.getElementById("errorefile").classList.add("errortext");
-            }else{
-                document.getElementById("errorefile").innerHTML = "";
-                document.getElementById("errorefile").classList.remove("errortext");
-            }
-            
-            if(domanda === ""){
-                document.getElementById("erroredomanda").innerHTML = "devi inserire una domanda";
-                document.getElementById("erroredomanda").classList.add("errortext");
-            }else{
-                document.getElementById("erroredomanda").innerHTML = "";
-                document.getElementById("erroredomanda").classList.remove("errortext");
-            }
-        } 
+    function invio() {
+      domanda = document.getElementById("form").value;
+      opzione1 = document.getElementById("opzione1").checked;
+      opzione2 = document.getElementById("opzione2").checked;
+      console.log("domanda", domanda)
+      console.log("file", file)
+      console.log("opzione1", opzione1)
+      console.log("opzione2", opzione2)
+      if (file === false) {
+        document.getElementById("errorefile").innerHTML = "devi inserire un file";
+        document.getElementById("errorefile").classList.add("errortext");
+      } else {
+        document.getElementById("errorefile").innerHTML = "";
+        document.getElementById("errorefile").classList.remove("errortext");
+      }
+      if (domanda === "") {
+        document.getElementById("erroredomanda").innerHTML = "devi inserire una domanda";
+        document.getElementById("erroredomanda").classList.add("errortext");
+      } else {
+        document.getElementById("erroredomanda").innerHTML = "";
+        document.getElementById("erroredomanda").classList.remove("errortext");
+      }
+    }
+    window.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        invio()
+      }
+    });
 
-        
     
-        window.addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                invio()
-            }
-        });
-    </script>
-  
-    <div class="mainBox">    
-        <div class="screen">    
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-        width="300" height="100" viewBox="0 0 1312.000000 403.000000"
-        preserveAspectRatio="xMidYMid meet">
 
-            <g transform="translate(-80,450) scale(0.100000,-0.100000)"
-            fill="#000000" stroke="none">
-                <path class="i"  d="M11790 3109 c-102 -46 -151 -123 -158 -247 -4 -77 -3 -87 28 -148 37
+    function updateImageDisplay() {
+      while (preview.firstChild) {
+        preview.removeChild(preview.firstChild);
+      }
+      const curFiles = input.files;
+      if (curFiles.length === 0) {
+        const para = document.createElement('p');
+        preview.appendChild(para);
+      } else {
+        const list = document.createElement('ol');
+        preview.appendChild(list);
+        for (const file of curFiles) {
+          const listItem = document.createElement('li');
+          const para = document.createElement('p');
+          if (validFileType(file)) {
+            para.textContent = `${file.name},\xa0\xa0\xa0\xa0\xa0\xa0\xa0${returnFileSize(file.size)}.`;
+            listItem.appendChild(para);
+          } else {
+            para.textContent = `File name ${file.name}`;
+            listItem.appendChild(para);
+          }
+          list.appendChild(listItem);
+        }
+        file = curFiles
+      }
+    }
+    const fileTypes = [
+      "image/apng",
+      "image/bmp",
+      "image/gif",
+      "image/jpeg",
+      "image/pjpeg",
+      "image/png",
+      "image/svg+xml",
+      "image/tiff",
+      "image/webp",
+      "image/x-icon"
+    ];
+
+    function validFileType(file) {
+      return fileTypes.includes(file.type);
+    }
+
+    function returnFileSize(number) {
+      if (number < 1024) {
+        return `${number} bytes`;
+      } else if (number >= 1024 && number < 1048576) {
+        return `${(number / 1024).toFixed(1)} KB`;
+      } else if (number >= 1048576) {
+        return `${(number / 1048576).toFixed(1)} MB`;
+      }
+    }
+  </script>
+
+  <div class="mainBox">
+    <div class="screen">
+      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="300" height="100"
+        viewBox="0 0 1312.000000 403.000000" preserveAspectRatio="xMidYMid meet">
+
+        <g transform="translate(-80,450) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+          <path class="i" d="M11790 3109 c-102 -46 -151 -123 -158 -247 -4 -77 -3 -87 28 -148 37
                 -76 86 -116 169 -140 109 -32 229 1 301 84 128 145 68 397 -109 457 -65 22
-                -176 19 -231 -6z"/>
+                -176 19 -231 -6z" />
 
-                <path d="M4400 1945 l0 -1025 280 0 280 0 0 1025 0 1025 -280 0 -280 0 0
-                -1025z"/>
+          <path d="M4400 1945 l0 -1025 280 0 280 0 0 1025 0 1025 -280 0 -280 0 0
+                -1025z" />
 
-                <path d="M7760 1945 l0 -1025 280 0 280 0 0 203 0 203 55 54 c30 29 56 52 59
+          <path d="M7760 1945 l0 -1025 280 0 280 0 0 203 0 203 55 54 c30 29 56 52 59
                 49 2 -2 64 -118 136 -256 l132 -253 330 0 c260 0 329 3 325 13 -2 6 -124 211
                 -271 455 -146 244 -266 447 -266 452 0 8 303 332 474 508 l70 72 -319 -1 -320
-                0 -200 -219 -200 -219 -3 495 -2 494 -280 0 -280 0 0 -1025z"/>
-                
+                0 -200 -219 -200 -219 -3 495 -2 494 -280 0 -280 0 0 -1025z" />
 
-                <path class="n" d="M1831 2424 c-120 -32 -212 -90 -281 -176 l-40 -51 0 112 0 111 -280
+          <path class="n" d="M1831 2424 c-120 -32 -212 -90 -281 -176 l-40 -51 0 112 0 111 -280
                 0 -280 0 0 -750 0 -750 280 0 280 0 0 409 c0 342 2 416 15 452 39 110 121 172
                 229 172 69 0 107 -16 147 -60 66 -70 64 -55 67 -535 l3 -438 274 0 275 0 0
-                527 c0 588 -1 598 -69 728 -65 126 -182 217 -322 250 -80 18 -227 18 -298 -1z"/>
+                527 c0 588 -1 598 -69 728 -65 126 -182 217 -322 250 -80 18 -227 18 -298 -1z" />
 
-                <path class="o" d="M3274 2424 c-337 -56 -566 -268 -630 -584 -23 -115 -15 -306 16 -405
+          <path class="o" d="M3274 2424 c-337 -56 -566 -268 -630 -584 -23 -115 -15 -306 16 -405
                 99 -310 329 -485 696 -526 332 -37 656 91 809 321 95 143 130 280 122 479 -5
                 146 -22 214 -78 330 -52 106 -169 228 -272 286 -181 100 -433 138 -663 99z
                 m302 -452 c92 -47 143 -140 151 -275 13 -200 -79 -343 -232 -362 -169 -21
-                -293 104 -303 306 -9 180 62 306 198 350 41 14 142 3 186 -19z"/>
+                -293 104 -303 306 -9 180 62 306 198 350 41 14 142 3 186 -19z" />
 
-                <path d="M5703 2426 c-306 -58 -530 -249 -606 -516 -29 -100 -40 -231 -27
+          <path d="M5703 2426 c-306 -58 -530 -249 -606 -516 -29 -100 -40 -231 -27
                 -330 41 -344 243 -568 588 -652 95 -23 304 -31 415 -15 l59 9 -76 69 c-81 76
                 -169 198 -208 292 -21 49 -32 62 -79 90 -98 58 -147 176 -136 329 12 181 114
                 292 267 292 36 0 70 -3 76 -7 8 -4 3 -32 -14 -89 -20 -69 -25 -105 -26 -213
@@ -96,118 +144,88 @@
                 -380 -59 l-62 -25 -46 20 c-100 44 -195 62 -357 66 -104 2 -179 -1 -227 -10z
                 m1175 -453 c115 -54 180 -214 153 -376 -20 -119 -73 -200 -156 -238 -44 -20
                 -179 -27 -190 -9 -3 5 3 40 15 77 43 143 43 347 1 483 -11 35 -17 68 -13 71
-                24 23 135 18 190 -8z"/>
+                24 23 135 18 190 -8z" />
 
-                <path class="a" d="M10605 2433 c-167 -21 -520 -119 -531 -147 -4 -11 15 -67 102 -297
+          <path class="a" d="M10605 2433 c-167 -21 -520 -119 -531 -147 -4 -11 15 -67 102 -297
                 l25 -66 97 33 c140 48 234 66 347 68 92 1 105 -1 160 -29 66 -33 105 -85 105
                 -142 l0 -31 -267 -4 c-292 -5 -332 -11 -450 -69 -83 -40 -147 -105 -185 -186
                 -26 -55 -32 -81 -36 -163 -5 -112 7 -178 50 -263 81 -163 252 -244 488 -234
                 162 7 272 49 361 138 l39 39 0 -80 0 -80 275 0 275 0 0 513 c0 560 -3 595 -59
                 711 -70 148 -214 244 -421 282 -68 12 -300 17 -375 7z m305 -960 l0 -77 -54
                 -52 c-83 -80 -193 -105 -283 -65 -50 23 -74 57 -80 115 -7 62 19 113 71 137
-                34 15 67 19 194 19 l152 0 0 -77z"/>
+                34 15 67 19 194 19 l152 0 0 -77z" />
 
-                <path class="i" d="M11630 1670 l0 -750 280 0 280 0 0 750 0 750 -280 0 -280 0 0 -750z"/>
+          <path class="i" d="M11630 1670 l0 -750 280 0 280 0 0 750 0 750 -280 0 -280 0 0 -750z" />
 
-                <path class="punto" d="M9552 1402 c-103 -37 -162 -124 -162 -240 0 -75 17 -125 58 -172 54
+          <path class="punto" d="M9552 1402 c-103 -37 -162 -124 -162 -240 0 -75 17 -125 58 -172 54
                 -64 103 -85 197 -85 70 0 87 4 134 30 167 92 170 354 5 447 -69 39 -158 46
-                -232 20z"/>
-            </g>
-        </svg>
+                -232 20z" />
+        </g>
+      </svg>
 
-        <div class="titolo">
-            Caricare un file pdf, docx o txt 
-            <div class="area">
-                Trascina e rilascia qui il file<br>
-                Limite di 10 MB per file • PDF, DOCX, TXT
-                <input type="file" id="upload" />
-            </div>
+      <div class="titolo">
+
+        <form method="post" enctype="multipart/form-data">
+          Caricare un file pdf, docx o txt
+          <div class="area">
+              <div>
+                <label for="image_uploads">
+                  Trascina e rilascia qui il file<br>
+                  Limite di 10 MB per file • PDF, DOCX, TXT
+                </label>
+                <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" multiple />
+              </div>
+              
+          </div>
+          <div class="preview">
             <div id="errorefile"></div>
-        <script>
-            var upload = document.getElementById('upload');
+          </div>
+        </form>
+        
 
-            function onFile() {
-                var me = this,
-                    file = upload.files[0],
-                    name = file.name.replace(/\.[^/.]+$/, '');
-            
-                
-            }
-            
-            upload.addEventListener('dragenter', function (e) {
-                upload.parentNode.className = 'area dragging';
-            }, false);
-            
-            upload.addEventListener('dragleave', function (e) {
-                upload.parentNode.className = 'area';
-            }, false);
-            
-            upload.addEventListener('dragdrop', function (e) {
-                onFile();
-            }, false);
-            
-            upload.addEventListener('change', function (e) {
-                onFile();
-            }, false);
-            cc
-            if (file.type === '' ||
-                    file.type === 'audio/mp3' ||       
-                    file.type === 'file/text' ||
-                    file.type === 'audio/mpeg' ||
-                    file.type === 'audio/wav' ||
-                    file.type === 'audio/x-wav' ||
-                    file.type === 'audio/wave' ||
-                    file.type === 'audio/x-pn-wav') {
-                    if (file.size < (3000 * 1024)) {
-                        upload.parentNode.className = 'area uploading';
-                    } else {
-                        window.alert('File size is too large, please ensure you are uploading a file of less than 3MB');
-                    }
-                } else {
-                    window.alert('File type ' + file.type + ' not supported');
-                }
-        </script>
-            
         Fai una domanda sul documento
         <!-- spazio per scrivere -->
         <div class="form">
-            <!--aumento e diminuisco le dimensione del riquadro per scrivere le domande-->
-            <textarea name="form" id="form" type="text" ></textarea>
+        <textarea name="form" id="form" type="text"></textarea>
         </div>
         <div id="erroredomanda"></div>
 
         <button class="scelta">
-            Opzioni avanzate 
-            <div class="arrow"></div>
+          Opzioni avanzate
+          <div class="arrow"></div>
         </button>
 
         <div id="opzione" style="display: none">
-            <input type="checkbox" name="opzione1" value="opzione1" id="opzione1"/> 
-            Mostra tutti i blocchi recuperati dalla ricerca vettoriale<br><br>
-            <input type="checkbox" name="opzione2" value="opzione2" id="opzione2"/> 
-            Mostra i contenuti anaizzati del documento
+          <input type="checkbox" name="opzione1" value="opzione1" id="opzione1" />
+          Mostra tutti i blocchi recuperati dalla ricerca vettoriale<br><br>
+          <input type="checkbox" name="opzione2" value="opzione2" id="opzione2" />
+          Mostra i contenuti anaizzati del documento
         </div>
 
-
         <script>
-            var acc = document.getElementsByClassName("scelta");
-            var i;
-
-            for (i = 0; i < acc.length; i++) {
-                acc[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
-                    if (panel.style.display === "block") {
-                    panel.style.display = "none";
-                    } else {
-                    panel.style.display = "block";
-                    }
-                });
-            }  
+          var acc = document.getElementsByClassName("scelta");
+          var i;
+          for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var panel = this.nextElementSibling;
+              if (panel.style.display === "block") {
+                panel.style.display = "none";
+              } else {
+                panel.style.display = "block";
+              }
+            });
+          }
         </script>
         <br>
         <button id="invio" onclick="invio()">invio</button>
-    </div>
-</body>     
+      </div>
+      <script>
+        const input = document.querySelector('input');
+        const preview = document.querySelector('.preview');
+        input.style.opacity = 0;
+        input.addEventListener('change', updateImageDisplay);
+      </script>
+</body>
 </html>
 
